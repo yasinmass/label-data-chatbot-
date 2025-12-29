@@ -1,15 +1,129 @@
-# What is this?
+🧠 Label-Data Chatbot (RAG-based AI Assistant)
 
-The github.dev web-based editor is a lightweight editing experience that runs entirely in your browser. You can navigate files and source code repositories from GitHub, and make and commit code changes.
+A Flask-based intelligent chatbot that answers user questions strictly from labeled data using Google Gemini (Generative AI).
+This project follows a Retrieval-Augmented Generation (RAG) approach to ensure accurate, context-grounded responses.
 
-There are two ways to go directly to a VS Code environment in your browser and start coding:
+📌 Project Overview
 
-* Press the . key on any repository or pull request.
-* Swap `.com` with `.dev` in the URL. For example, this repo https://github.com/github/dev becomes http://github.dev/github/dev
+This chatbot is designed to:
 
-Preview the gif below to get a quick demo of github.dev in action.
+Answer questions only using predefined Q&A data
 
-![github dev](https://user-images.githubusercontent.com/856858/130119109-4769f2d7-9027-4bc4-a38c-10f297499e8f.gif)
+Avoid hallucinations from the AI model
 
-# Why?
-It’s a quick way to edit and navigate code. It's especially useful if you want to edit multiple files at a time or take advantage of all the powerful code editing features of Visual Studio Code when making a quick change. For more information, see our [documentation](https://github.co/codespaces-editor-help).
+Provide reliable responses for domain-specific datasets
+
+The system loads labeled data from a CSV file and uses it as context for the Gemini model.
+
+⚙️ Tech Stack
+
+Backend: Flask (Python)
+
+AI Model: Google Gemini (gemini-2.5-flash)
+
+Data Source: CSV-based labeled Q&A
+
+Frontend: HTML (Jinja templates)
+
+Deployment Ready: Procfile included
+
+🧩 Architecture (How it Works)
+
+User enters a question via the web interface
+
+Flask backend receives the query
+
+Labeled Q&A data is loaded from CSV
+
+Context is constructed from the dataset
+
+Gemini model answers only using that context
+
+If no relevant answer exists → chatbot responds safely
+
+📂 Project Structure
+label-data-chatbot-/
+│
+├── app.py                 # Main Flask application
+├── QA for chatbot.csv     # Labeled Q&A dataset
+├── requirements.txt       # Python dependencies
+├── Procfile               # Deployment configuration
+├── README.md              # Project documentation
+└── templates/
+    └── index.html         # Chat UI
+
+🚀 Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/yasinmass/label-data-chatbot-.git
+cd label-data-chatbot-
+
+2️⃣ Create Virtual Environment (Recommended)
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+
+4️⃣ Set Environment Variable
+
+Create a .env file:
+
+GOOGLE_API_KEY=your_gemini_api_key
+
+▶️ Run the Application
+python app.py
+
+
+Open browser:
+
+http://127.0.0.1:5000
+
+🔐 Key Features
+
+✅ Context-aware responses
+
+✅ No hallucinated answers
+
+✅ Simple CSV-based knowledge update
+
+✅ Easy deployment
+
+✅ Beginner-friendly codebase
+
+🧪 Example Use Case
+
+User Question:
+
+What is machine learning?
+
+Chatbot Behavior:
+
+Searches labeled dataset
+
+Responds only if answer exists
+
+Otherwise returns:
+“No relevant Q&A found.”
+
+🌍 Deployment
+
+This project is deployment-ready and can be hosted on:
+
+Render
+
+Railway
+
+Heroku
+
+Any Flask-supported platform
+
+👤 Author
+
+Mohammed Yasin
+GitHub: @yasinmass
+
+📜 License
+
+This project is open-source and free to use for learning and development purposes.
+
+⭐ If you find this useful, give the repo a star!
